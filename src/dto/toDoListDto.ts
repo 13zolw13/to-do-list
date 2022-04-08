@@ -7,6 +7,11 @@ export class ToDoListDto {
   }
 
   addTask(task: Task) {
-    return this.toDoList.push(task);
+    this.toDoList.push(task);
+    return this.toDoList;
   }
+  showTask(index: number) {
+    return this.toDoList[index];
+  }
+   
 }
