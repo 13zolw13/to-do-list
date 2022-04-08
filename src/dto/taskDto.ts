@@ -1,8 +1,15 @@
+import { IsBoolean, IsDate, IsNumber, IsString } from 'class-validator';
+
 export class Task {
+  @IsNumber()
   id: number;
+  @IsString()
   title: string;
+  @IsString()
   description: string;
+  @IsBoolean()
   status: boolean;
+  @IsDate()
   createdAt: Date;
   constructor(
     id: number,
