@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Type } from 'class-transformer';
 import { IsArray, ValidateNested } from 'class-validator';
+import { QueryDto } from './dto/queryDto';
 import { Task } from './dto/taskDto';
 
 @Injectable()
@@ -12,8 +13,18 @@ export class ToDoListService {
   constructor() {
     this.toDoList = [];
   }
-  showAllTasks(): Task[] {
-    return this.toDoList;
+  showAllTasks(queryOption?: QueryDto): Task[] {
+    let TaskList: Task[];
+    if (queryOption.IndexQuery) {
+      const task = this.showTask(Number(queryOption.IndexQuery));
+      TaskList = [task];
+    }
+    if (queryOption.filter) {
+      TaskList = this.showTasksWithStatus(queryOption.filter === 'true');
+    } else {
+      TaskList = this.toDoList;
+    }
+    return TaskList;
   }
   addTask(task: Task) {
     this.toDoList.push(task);
