@@ -12,7 +12,9 @@ export class ToDoListService {
   constructor() {
     this.toDoList = [];
   }
-
+  showAllTasks(): Task[] {
+    return this.toDoList;
+  }
   addTask(task: Task) {
     this.toDoList.push(task);
     return this.toDoList;
