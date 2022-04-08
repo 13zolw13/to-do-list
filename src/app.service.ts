@@ -19,8 +19,8 @@ export class ToDoListService {
       const task = this.showTask(Number(queryOption.IndexQuery));
       TaskList = [task];
     }
-    if (queryOption.filter) {
-      TaskList = this.showTasksWithStatus(queryOption.filter === 'true');
+    if (queryOption.statusChange) {
+      TaskList = this.showTasksWithStatus(queryOption.statusChange === 'true');
     } else {
       TaskList = this.toDoList;
     }
