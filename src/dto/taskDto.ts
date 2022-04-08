@@ -2,13 +2,13 @@ export class Task {
   id: number;
   title: string;
   description: string;
-  status = false;
+  status: boolean;
   createdAt: Date;
   constructor(
     id: number,
     title: string,
     description: string,
-    status: false,
+    status: boolean,
     createdAt: Date,
   ) {
     this.id = id;
