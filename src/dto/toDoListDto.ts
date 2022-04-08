@@ -19,4 +19,8 @@ export class ToDoListDto {
       : (this.toDoList[index].status = true);
     return this.toDoList[index];
   }
+  changeTask(index: number, task: Task) {
+    this.toDoList[index] = task;
+    return this.toDoList[index];
+  }
 }

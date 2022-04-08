@@ -31,4 +31,13 @@ describe(ToDoListDto.name, () => {
     List.changeStatus(0);
     expect(List.toDoList[0].status).toBe(false);
   });
+
+  it('Should change task', () => {
+    const task = new Task(1, 'title', 'description', false, new Date());
+    const List = new ToDoListDto();
+    List.addTask(task);
+    const newTask = new Task(2, 'NewTitle', 'description', false, new Date());
+    List.changeTask(0, newTask);
+    expect(List.toDoList[0].title).toBe('NewTitle');
+  });
 });
