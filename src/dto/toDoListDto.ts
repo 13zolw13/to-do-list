@@ -13,5 +13,10 @@ export class ToDoListDto {
   showTask(index: number) {
     return this.toDoList[index];
   }
-   
+  changeStatus(index: number) {
+    this.toDoList[index].status === true
+      ? (this.toDoList[index].status = false)
+      : (this.toDoList[index].status = true);
+    return this.toDoList[index];
+  }
 }

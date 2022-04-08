@@ -2,7 +2,7 @@ export class Task {
   id: number;
   title: string;
   description: string;
-  status: false;
+  status = false;
   createdAt: Date;
   constructor(
     id: number,

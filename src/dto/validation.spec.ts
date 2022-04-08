@@ -20,7 +20,15 @@ describe(ToDoListDto.name, () => {
     const task = new Task(1, 'title', 'description', false, new Date());
     const List = new ToDoListDto();
     List.addTask(task);
-    List.changeStatus(0)
+    List.changeStatus(0);
     expect(List.toDoList[0].status).toBe(true);
-  }
+  });
+  it('Should toogle task status', () => {
+    const task = new Task(1, 'title', 'description', false, new Date());
+    const List = new ToDoListDto();
+    List.addTask(task);
+    List.changeStatus(0);
+    List.changeStatus(0);
+    expect(List.toDoList[0].status).toBe(false);
+  });
 });
