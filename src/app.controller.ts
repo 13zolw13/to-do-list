@@ -34,7 +34,6 @@ export class AppController {
   @Delete('remove/:index')
   removeTask(@Param('index') index: string) {
     this.toDoService.removeTask(Number(index));
-    // this.toDoService.removeTask(index);
     return this.toDoService.showAllTasks();
   }
 }

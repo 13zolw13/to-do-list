@@ -4,8 +4,7 @@ import { IsArray, ValidateNested } from 'class-validator';
 import { QueryDto } from './dto/queryDto';
 import { Task } from './dto/taskDto';
 
-@Injectable()
-export class ToDoListService {
+export class ToDoList {
   @ValidateNested()
   @Type(() => Task)
   @IsArray()
@@ -13,6 +12,9 @@ export class ToDoListService {
   constructor() {
     this.toDoList = [];
   }
+}
+@Injectable()
+export class ToDoListService extends ToDoList {
   showAllTasks(queryOption?: QueryDto): Task[] {
     let TaskList: Task[];
     if (queryOption?.IndexQuery) {
