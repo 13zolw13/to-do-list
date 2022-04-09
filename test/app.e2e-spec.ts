@@ -25,9 +25,12 @@ describe('todo list (e2e)', () => {
     it('/todolist query search', async () => {
       await request(app.getHttpServer()).post('/todolist/add').send(mockTask);
       await request(app.getHttpServer()).post('/todolist/add').send(mockTask2);
-      return await request(app.getHttpServer())
-        .get('/todolist?search=true')
-        .expect(200);
+      const response = await request(app.getHttpServer()).get(
+        '/todolist?statusChange=true',
+      );
+      expect(response.statusCode).toBe(200);
+      console.log(response.body);
+      expect(response.body.length).toBe(1);
     });
     it('/todolist add task api endpoint', async () => {
       return await request(app.getHttpServer())
@@ -36,9 +39,18 @@ describe('todo list (e2e)', () => {
           title: 'title',
           description: 'description',
           status: false,
-          date: new Date(),
         })
         .expect(201);
+    });
+
+    it('/todolist query search', async () => {
+      await request(app.getHttpServer()).post('/todolist/add').send(mockTask);
+      await request(app.getHttpServer()).post('/todolist/add').send(mockTask2);
+      const response = await request(app.getHttpServer()).delete(
+        '/todolist/remove/1',
+      );
+      expect(response.status).toBe(200);
+      expect(response.body.length).toBe(1);
     });
   });
 });

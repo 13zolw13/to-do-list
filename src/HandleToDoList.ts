@@ -14,7 +14,7 @@ export abstract class HandleToDoList extends ToDoList {
       taskId,
       task.title,
       task.description,
-      false,
+      task.status,
       new Date(),
     );
     this.toDoList.push(newTask);

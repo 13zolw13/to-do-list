@@ -81,6 +81,6 @@ describe(ToDoListService.name, () => {
     List.addTask(task);
     List.changeStatus(2);
 
-    expect(List.showTasksWithStatus(false).length).toBe(2);
+    expect(List.showTasksWithStatus(true).length).toBe(1);
   });
 });
