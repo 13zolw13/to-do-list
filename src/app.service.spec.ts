@@ -16,7 +16,7 @@ describe(ToDoListService.name, () => {
     expect(List.showTask(0).id).toBe(1);
   });
 
-  it('Should toogle task status', () => {
+  it('Should toggle task status', () => {
     const task = new Task(1, 'title', 'description', false, new Date());
     const List = new ToDoListService();
     List.addTask(task);
@@ -24,7 +24,7 @@ describe(ToDoListService.name, () => {
     List.changeStatus(0);
     expect(List.toDoList[1].status).toBe(false);
   });
-  it('Should toogle task status', () => {
+  it('Should toggle task status', () => {
     const task = new Task(1, 'title', 'description', false, new Date());
     const List = new ToDoListService();
     List.addTask(task);
