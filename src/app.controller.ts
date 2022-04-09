@@ -9,6 +9,7 @@ import {
   ValidationPipe,
 } from '@nestjs/common';
 import { ToDoListService } from './app.service';
+import { NewTaskDto } from './dto/newTaskDto';
 import { QueryDto } from './dto/queryDto';
 import { Task } from './dto/taskDto';
 
@@ -27,7 +28,7 @@ export class AppController {
     return this.toDoService.showAllTasks(queryDto);
   }
   @Post('add')
-  addTask(@Body(new ValidationPipe({ transform: true })) taskDto: Task) {
+  addTask(@Body(new ValidationPipe({ transform: true })) taskDto: NewTaskDto) {
     this.toDoService.addTask(taskDto);
     return this.toDoService.showAllTasks();
   }

@@ -1,23 +1,24 @@
 import { Task } from './dto/taskDto';
 import { ToDoListService } from './app.service';
+import { NewTaskDto } from './dto/newTaskDto';
 
 describe(ToDoListService.name, () => {
   it('Add task to the list', () => {
-    const task = new Task(1, 'title', 'description', false, new Date());
+    const task = new NewTaskDto('title', 'description', false);
     const List = new ToDoListService();
     List.addTask(task);
-    expect(List.toDoList[0].id).toBe(1);
+    expect(List.toDoList.length).toBe(1);
   });
 
   it('Should show  specific task from the list', () => {
-    const task = new Task(1, 'title', 'description', false, new Date());
+    const task = new NewTaskDto('title', 'description', false);
     const List = new ToDoListService();
     List.addTask(task);
-    expect(List.showTask(0).id).toBe(1);
+    expect(List.showTask(0)).toHaveProperty('title', task.title);
   });
 
   it('Should toggle task status', () => {
-    const task = new Task(1, 'title', 'description', false, new Date());
+    const task = new NewTaskDto('title', 'description', false);
     const List = new ToDoListService();
     List.addTask(task);
     List.addTask(task);
@@ -25,7 +26,7 @@ describe(ToDoListService.name, () => {
     expect(List.toDoList[1].status).toBe(false);
   });
   it('Should toggle task status', () => {
-    const task = new Task(1, 'title', 'description', false, new Date());
+    const task = new NewTaskDto('title', 'description', false);
     const List = new ToDoListService();
     List.addTask(task);
     List.addTask(task);
@@ -36,7 +37,7 @@ describe(ToDoListService.name, () => {
   });
 
   it('Should change task', () => {
-    const task = new Task(1, 'title', 'description', false, new Date());
+    const task = new NewTaskDto('title', 'description', false);
     const List = new ToDoListService();
     List.addTask(task);
     const newTask = new Task(2, 'NewTitle', 'description', false, new Date());
@@ -45,7 +46,7 @@ describe(ToDoListService.name, () => {
   });
 
   it('Should remove task from list ', () => {
-    const task = new Task(1, 'title', 'description', false, new Date());
+    const task = new NewTaskDto('title', 'description', false);
     const List = new ToDoListService();
     List.addTask(task);
     List.removeTask(0);
@@ -53,7 +54,7 @@ describe(ToDoListService.name, () => {
   });
 
   it('Should remove task from list ', () => {
-    const task = new Task(1, 'title', 'description', false, new Date());
+    const task = new NewTaskDto('title', 'description', false);
     const List = new ToDoListService();
     List.addTask(task);
     List.addTask(task);
@@ -63,7 +64,7 @@ describe(ToDoListService.name, () => {
   });
 
   it('Should show only done tasks ', () => {
-    const task = new Task(1, 'title', 'description', false, new Date());
+    const task = new NewTaskDto('title', 'description', false);
     const List = new ToDoListService();
     List.addTask(task);
     List.addTask(task);
@@ -73,7 +74,7 @@ describe(ToDoListService.name, () => {
   });
 
   it('Should show only undone tasks ', () => {
-    const task = new Task(1, 'title', 'description', false, new Date());
+    const task = new NewTaskDto('title', 'description', false);
     const List = new ToDoListService();
     List.addTask(task);
     List.addTask(task);

@@ -1,3 +1,4 @@
+import { NewTaskDto } from './dto/newTaskDto';
 import { QueryDto } from './dto/queryDto';
 import { Task } from './dto/taskDto';
 import { ToDoList } from './ToDoList';
@@ -7,8 +8,16 @@ export abstract class HandleToDoList extends ToDoList {
   abstract showTask(index: number): Task;
   abstract showTasksWithStatus(status: boolean): Task[];
 
-  addTask(task: Task) {
-    this.toDoList.push(task);
+  addTask(task: NewTaskDto) {
+    const taskId = Math.floor(Math.random() * 1000);
+    const newTask = new Task(
+      taskId,
+      task.title,
+      task.description,
+      false,
+      new Date(),
+    );
+    this.toDoList.push(newTask);
     return this.toDoList;
   }
   changeStatus(index: number) {
