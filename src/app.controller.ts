@@ -9,11 +9,12 @@ import {
   Query,
   ValidationPipe,
 } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { ToDoListService } from './app.service';
 import { NewTaskDto } from './dto/newTaskDto';
 import { QueryDto } from './dto/queryDto';
 import { Task } from './dto/taskDto';
-
+@ApiTags('ToDo List')
 @Controller('todolist')
 export class AppController {
   constructor(private readonly toDoService: ToDoListService) {}

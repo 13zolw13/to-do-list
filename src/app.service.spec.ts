@@ -101,7 +101,6 @@ describe(ToDoListService.name, () => {
       List.addTask(task);
       List.addTask(task);
       List.addTask(task);
-
       expect(List.showAllTasks().length).toBe(3);
     });
 
@@ -135,6 +134,7 @@ describe(ToDoListService.name, () => {
       List.addTask(task);
       List.addTask(task2);
       List.addTask(task);
+
       const query: QueryDto = { statusChange: 'false' };
       const searchTask = List.showAllTasks(query);
 

@@ -1,14 +1,20 @@
+import { ApiProperty } from '@nestjs/swagger';
 import { IsBoolean, IsDate, IsNumber, IsString } from 'class-validator';
 
 export class Task {
+  @ApiProperty()
   @IsNumber()
   id: number;
+  @ApiProperty()
   @IsString()
   title: string;
+  @ApiProperty()
   @IsString()
   description: string;
+  @ApiProperty()
   @IsBoolean()
   status: boolean;
+  @ApiProperty()
   @IsDate()
   createdAt: Date;
   constructor(
