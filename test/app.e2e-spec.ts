@@ -36,7 +36,6 @@ describe('todo list (e2e)', () => {
             '/todolist?statusChange=true',
           );
           expect(response.statusCode).toBe(200);
-          console.log(response.body);
           expect(response.body.length).toBe(1);
         });
       });
