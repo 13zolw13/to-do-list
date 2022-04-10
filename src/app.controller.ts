@@ -5,6 +5,7 @@ import {
   Get,
   Param,
   Post,
+  Put,
   Query,
   ValidationPipe,
 } from '@nestjs/common';
@@ -32,6 +33,12 @@ export class AppController {
     this.toDoService.addTask(taskDto);
     return this.toDoService.showAllTasks();
   }
+  @Put('updateStatus/:index')
+  updateStatus(@Param('index') index: string) {
+    this.toDoService.changeStatus(Number(index));
+    return this.toDoService.showAllTasks();
+  }
+
   @Delete('remove/:index')
   removeTask(@Param('index') index: string) {
     this.toDoService.removeTask(Number(index));
