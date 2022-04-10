@@ -16,7 +16,7 @@ import { Task } from './dto/taskDto';
 
 @Controller('todolist')
 export class AppController {
-  constructor(private readonly toDoService: ToDoListService) { }
+  constructor(private readonly toDoService: ToDoListService) {}
 
   @Get()
   getData(@Query() queryDto: QueryDto) {
