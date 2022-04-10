@@ -16,7 +16,7 @@ import { Task } from './dto/taskDto';
 
 @Controller('todolist')
 export class AppController {
-  constructor(private readonly toDoService: ToDoListService) {}
+  constructor(private readonly toDoService: ToDoListService) { }
 
   @Get()
   getData(@Query() queryDto: QueryDto) {
@@ -36,6 +36,11 @@ export class AppController {
   @Put('updateStatus/:index')
   updateStatus(@Param('index') index: string) {
     this.toDoService.changeStatus(Number(index));
+    return this.toDoService.showAllTasks();
+  }
+  @Put('updateTask/:index')
+  updateTask(@Param('index') index: string, @Body() taskDto: Task) {
+    this.toDoService.changeTask(Number(index), taskDto);
     return this.toDoService.showAllTasks();
   }
 
