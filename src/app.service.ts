@@ -6,14 +6,15 @@ import { HandleToDoList } from './HandleToDoList';
 @Injectable()
 export class ToDoListService extends HandleToDoList {
   showAllTasks(queryOption?: QueryDto): Task[] {
-    let TaskList: Task[];
+    let TaskList: Task[] = [];
     if (queryOption?.IndexQuery) {
       const task = this.showTask(Number(queryOption.IndexQuery));
-      TaskList = [task];
+      TaskList.push(task);
     }
     if (queryOption?.statusChange) {
       TaskList = this.showTasksWithStatus(queryOption.statusChange === 'true');
-    } else {
+    }
+    if (!queryOption) {
       TaskList = this.toDoList;
     }
     return TaskList;

@@ -1,6 +1,7 @@
 import { Task } from './dto/taskDto';
 import { ToDoListService } from './app.service';
 import { NewTaskDto } from './dto/newTaskDto';
+import { QueryDto } from './dto/queryDto';
 
 describe(ToDoListService.name, () => {
   describe('Adding task to the list', () => {
@@ -14,8 +15,10 @@ describe(ToDoListService.name, () => {
   describe('Show specific task', () => {
     it('Should show  specific task from the list', () => {
       const task = new NewTaskDto('title', 'description', false);
+      const task2 = new NewTaskDto('title2', 'description', false);
       const List = new ToDoListService();
       List.addTask(task);
+      List.addTask(task2);
       expect(List.showTask(0)).toHaveProperty('title', task.title);
     });
   });
@@ -89,6 +92,53 @@ describe(ToDoListService.name, () => {
       List.changeStatus(2);
 
       expect(List.showTasksWithStatus(true).length).toBe(1);
+    });
+  });
+  describe('Show all tasks', () => {
+    it('should return list of all tasks ', () => {
+      const task = new NewTaskDto('title', 'description', false);
+      const List = new ToDoListService();
+      List.addTask(task);
+      List.addTask(task);
+      List.addTask(task);
+
+      expect(List.showAllTasks().length).toBe(3);
+    });
+
+    it('should return task with index', () => {
+      const task = new NewTaskDto('title', 'description', false);
+      const List = new ToDoListService();
+      List.addTask(task);
+      List.addTask(task);
+      List.addTask(task);
+      const query: QueryDto = { IndexQuery: '1' };
+      const searchTask = List.showAllTasks(query);
+
+      expect(searchTask.length).toBe(1);
+    });
+    it('should return task status change', () => {
+      const task = new NewTaskDto('title', 'description', false);
+      const task2 = new NewTaskDto('title', 'description', true);
+      const List = new ToDoListService();
+      List.addTask(task);
+      List.addTask(task2);
+      List.addTask(task);
+      const query: QueryDto = { statusChange: 'true' };
+      const searchTask = List.showAllTasks(query);
+
+      expect(searchTask.length).toBe(1);
+    });
+    it('should return task status change', () => {
+      const task = new NewTaskDto('title', 'description', false);
+      const task2 = new NewTaskDto('title', 'description', true);
+      const List = new ToDoListService();
+      List.addTask(task);
+      List.addTask(task2);
+      List.addTask(task);
+      const query: QueryDto = { statusChange: 'false' };
+      const searchTask = List.showAllTasks(query);
+
+      expect(searchTask.length).toBe(2);
     });
   });
 });
