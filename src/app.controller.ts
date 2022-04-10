@@ -18,10 +18,13 @@ import { Task } from './dto/taskDto';
 @Controller('todolist')
 export class AppController {
   constructor(private readonly toDoService: ToDoListService) {}
-
   @Get()
   getData(@Query() queryDto: QueryDto) {
-    return this.toDoService.showAllTasks(queryDto);
+    if (Object.keys(queryDto).length === 0) {
+      return this.toDoService.showAllTasks();
+    } else {
+      return this.toDoService.showAllTasks(queryDto);
+    }
   }
   @Post('add')
   addTask(@Body(new ValidationPipe({ transform: true })) taskDto: NewTaskDto) {
