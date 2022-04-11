@@ -13,8 +13,8 @@ import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { ToDoListService } from './app.service';
 import { NewTaskDto } from './dto/newTaskDto';
 import { QueryDto } from './dto/queryDto';
-import { Task } from './dto/taskDto';
-import { ToDoList } from './ToDoList';
+import { Task } from './model/taskDto';
+import { ToDoList } from './model/ToDoList';
 @ApiTags('ToDo List')
 @Controller('todolist')
 export class AppController {

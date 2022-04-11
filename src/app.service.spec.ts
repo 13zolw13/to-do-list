@@ -1,4 +1,4 @@
-import { Task } from './dto/taskDto';
+import { Task } from './model/taskDto';
 import { ToDoListService } from './app.service';
 import { NewTaskDto } from './dto/newTaskDto';
 import { QueryDto } from './dto/queryDto';

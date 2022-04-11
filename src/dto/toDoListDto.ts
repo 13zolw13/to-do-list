@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
 import { IsArray, ValidateNested } from 'class-validator';
-import { Task } from './taskDto';
+import { Task } from '../model/taskDto';
 
 export class ToDoListDto {
   @ValidateNested()
