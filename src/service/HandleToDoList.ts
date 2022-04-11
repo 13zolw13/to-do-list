@@ -1,6 +1,6 @@
 import { NewTaskDto } from '../dto/newTaskDto';
 import { QueryDto } from '../dto/queryDto';
-import { Task } from '../model/taskDto';
+import { Task } from '../model/task';
 import { ToDoList } from '../model/ToDoList';
 
 export abstract class HandleToDoList extends ToDoList {

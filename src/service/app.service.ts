@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { QueryDto } from '../dto/queryDto';
-import { Task } from '../model/taskDto';
+import { Task } from '../model/task';
 import { HandleToDoList } from '../model/HandleToDoList';
 
 @Injectable()
