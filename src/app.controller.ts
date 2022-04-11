@@ -10,7 +10,7 @@ import {
   ValidationPipe,
 } from '@nestjs/common';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
-import { ToDoListService } from './app.service';
+import { ToDoListService } from './service/app.service';
 import { NewTaskDto } from './dto/newTaskDto';
 import { QueryDto } from './dto/queryDto';
 import { Task } from './model/taskDto';
