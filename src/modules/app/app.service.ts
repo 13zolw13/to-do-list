@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { QueryDto } from './dto/queryDto';
-import { Task } from './model/taskDto';
-import { HandleToDoList } from './model/HandleToDoList';
+import { QueryDto } from '../dto/queryDto';
+import { Task } from '../model/task';
+import { HandleToDoList } from '../model/HandleToDoList';
 
 @Injectable()
 export class ToDoListService extends HandleToDoList {
