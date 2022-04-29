@@ -1,9 +1,9 @@
-import { Task } from '../model/task';
-import { ToDoListService } from './app.service';
 import { NewTaskDto } from '../dto/newTaskDto';
 import { QueryDto } from '../dto/queryDto';
+import { Task } from '../model/task';
+import { ToDoListService } from './app.service';
 
-describe(ToDoListService.name, () => {
+describe('ToDoListService', () => {
   describe('Adding task to the list', () => {
     it('Add task to the list', () => {
       const task = new NewTaskDto('title', 'description', false);
