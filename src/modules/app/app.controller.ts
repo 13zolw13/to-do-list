@@ -10,11 +10,11 @@ import {
   ValidationPipe,
 } from '@nestjs/common';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
-import { ToDoListService } from './app.service';
 import { NewTaskDto } from '../../dto/newTaskDto';
 import { QueryDto } from '../../dto/queryDto';
 import { Task } from '../../model/task';
 import { ToDoList } from '../../model/ToDoList';
+import { ToDoListService } from '../../modules/app/service/app.service';
 @ApiTags('ToDo List')
 @Controller('todolist')
 export class AppController {

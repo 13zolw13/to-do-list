@@ -1,6 +1,6 @@
-import { NewTaskDto } from '../dto/newTaskDto';
-import { QueryDto } from '../dto/queryDto';
-import { Task } from '../model/task';
+import { NewTaskDto } from '../../../dto/newTaskDto';
+import { QueryDto } from '../../../dto/queryDto';
+import { Task } from '../../../model/task';
 import { ToDoListService } from './app.service';
 
 describe('ToDoListService', () => {
