@@ -26,11 +26,7 @@ export class AppController {
     type: ToDoList,
   })
   getData(@Query() queryDto: QueryDto) {
-    if (Object.keys(queryDto).length === 0) {
-      return this.toDoService.showAllTasks();
-    } else {
-      return this.toDoService.showAllTasks(queryDto);
-    }
+    return this.toDoService.showAllTasks(queryDto);
   }
   @Post('add')
   @ApiResponse({
@@ -39,8 +35,7 @@ export class AppController {
     type: ToDoList,
   })
   addTask(@Body(new ValidationPipe({ transform: true })) taskDto: NewTaskDto) {
-    this.toDoService.addTask(taskDto);
-    return this.toDoService.showAllTasks();
+    return this.toDoService.addTask(taskDto);
   }
   @Put('updateStatus/:index')
   @ApiResponse({

@@ -1,12 +1,15 @@
 import { Injectable } from '@nestjs/common';
 import { QueryDto } from '../../../dto/queryDto';
-import { Task } from '../../../model/task';
 import { HandleToDoList } from '../../../model/HandleToDoList';
+import { Task } from '../../../model/task';
 
 @Injectable()
 export class ToDoListService extends HandleToDoList {
   showAllTasks(queryOption?: QueryDto): Task[] {
     let TaskList: Task[] = [];
+    if (queryOption === undefined || Object.keys(queryOption).length === 0) {
+      TaskList = this.toDoList;
+    }
     if (queryOption?.IndexQuery) {
       const task = this.showTask(Number(queryOption.IndexQuery));
       TaskList.push(task);
