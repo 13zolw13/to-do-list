@@ -14,6 +14,7 @@ import { NewTaskDto } from '../../dto/newTaskDto';
 import { QueryDto } from '../../dto/queryDto';
 import { Task } from '../../model/task';
 import { ToDoList } from '../../model/ToDoList';
+import { UpdateTaskDto } from '../../model/UpdateTaskDto';
 import { ToDoListService } from '../../modules/app/service/app.service';
 @ApiTags('ToDo List')
 @Controller('todolist')
@@ -54,7 +55,9 @@ export class AppController {
     type: ToDoList,
   })
   updateTask(@Param('index') index: string, @Body() taskDto: Task) {
-    this.toDoService.changeTask(Number(index), taskDto);
+    const updateTaskDto = new UpdateTaskDto(index, taskDto);
+
+    this.toDoService.changeTask(updateTaskDto);
     return this.toDoService.showAllTasks();
   }
   @Delete('remove/:index')

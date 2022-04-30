@@ -2,6 +2,7 @@ import { NewTaskDto } from '../dto/newTaskDto';
 import { QueryDto } from '../dto/queryDto';
 import { Task } from './task';
 import { ToDoList } from './ToDoList';
+import { UpdateTaskDto } from './UpdateTaskDto';
 
 export abstract class HandleToDoList extends ToDoList {
   abstract showAllTasks(queryOption?: QueryDto): Task[];
@@ -38,11 +39,12 @@ export abstract class HandleToDoList extends ToDoList {
           new Date(),
         ));
 
-    return this.changeTask(index, task);
+    const updateTask = new UpdateTaskDto(index, task);
+    return this.changeTask(updateTask);
   }
-  changeTask(index: number, task: Task) {
-    this.toDoList[index] = task;
-    return this.toDoList[index];
+  changeTask(updateTaskDto: UpdateTaskDto) {
+    this.toDoList[updateTaskDto.index] = updateTaskDto.task;
+    return this.toDoList[updateTaskDto.index];
   }
   removeTask(index: number) {
     this.toDoList.splice(index, 1);

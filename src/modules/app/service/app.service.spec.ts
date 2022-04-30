@@ -1,6 +1,7 @@
 import { NewTaskDto } from '../../../dto/newTaskDto';
 import { QueryDto } from '../../../dto/queryDto';
 import { Task } from '../../../model/task';
+import { UpdateTaskDto } from '../../../model/UpdateTaskDto';
 import { ToDoListService } from './app.service';
 
 describe('ToDoListService', () => {
@@ -49,7 +50,8 @@ describe('ToDoListService', () => {
       const List = new ToDoListService();
       List.addTask(task);
       const newTask = new Task(2, 'NewTitle', 'description', false, new Date());
-      List.changeTask(0, newTask);
+      const UpdateTask = new UpdateTaskDto(0, newTask);
+      List.changeTask(UpdateTask);
       expect(List.toDoList[0].title).toBe('NewTitle');
     });
   });
